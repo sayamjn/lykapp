@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-const App = () => {
+function App() {
   return (
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <div className="min-h-screen bg-gray-100 py-8">
+      <div className="container mx-auto px-4">
+        <h1 className="text-3xl font-bold text-center mb-8">
+          Video Player with Ad Overlays
+        </h1>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

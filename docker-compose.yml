@@ -21,5 +21,6 @@ services:
     environment:
       - PORT=8080
       - CORS_ALLOWED_ORIGINS=http://localhost:3000
-    volumes:
-      - ./backend:/app
+      - UNSPLASH_ACCESS_KEY=${UNSPLASH_ACCESS_KEY}
+      - AD_CACHE_TIMEOUT=5m
+      - AD_REFRESH_ENABLED=true

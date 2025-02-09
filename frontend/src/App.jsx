@@ -1,4 +1,5 @@
 import React from 'react';
+import { VideoPlayer } from './components';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
         <h1 className="text-3xl font-bold text-center mb-8">
           Video Player with Ad Overlays
         </h1>
+        <VideoPlayer />
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-const API_BASE_URL = 'http://localhost:8080/api';
+const VITE_API_BASE_URL = 'http://localhost:8080/api';
 
 export const fetchAds = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/ads`);
+    const response = await fetch(`${VITE_API_BASE_URL}/ads`);
     if (!response.ok) {
       throw new Error('Failed to fetch ads');
     }
@@ -15,7 +15,7 @@ export const fetchAds = async () => {
 
 export const trackAdClick = async (data) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/ads/click`, {
+    const response = await fetch(`${VITE_API_BASE_URL}/ads/click`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

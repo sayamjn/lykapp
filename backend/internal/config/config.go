@@ -18,7 +18,7 @@ func LoadConfig() *Config {
         UnsplashKey:     getEnvOrDefault("UNSPLASH_ACCESS_KEY", "HbVp0qrtx6GAVd8Hat1gclyRLSNIBh9-Kzk0Rq_JlVs"),
         CacheTimeout:    getEnvDurationOrDefault("AD_CACHE_TIMEOUT", 5*time.Minute),
         RefreshEnabled:  getEnvBoolOrDefault("AD_REFRESH_ENABLED", true),
-        AllowedOrigins:  getEnvOrDefault("CORS_ALLOWED_ORIGINS", "http://localhost:3000"),
+        AllowedOrigins:  getEnvOrDefault("CORS_ALLOWED_ORIGINS", "http://localhost:5173"),
     }
 }
 

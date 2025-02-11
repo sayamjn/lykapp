@@ -4,10 +4,12 @@ import (
     "log"
     "net/http"
     "os"
+    "path/filepath"
     "time"
 
     "github.com/sayamjn/lykapp/internal/api/handlers"
     "github.com/sayamjn/lykapp/internal/config"
+    "github.com/sayamjn/lykapp/internal/middleware"
     "github.com/sayamjn/lykapp/internal/store"
 )
 
@@ -33,8 +35,21 @@ func main() {
         log.Fatal("UNSPLASH_ACCESS_KEY is required")
     }
 
+    logDir := getEnvOrDefault("LOG_DIR", "logs")
+    if err := os.MkdirAll(logDir, 0755); err != nil {
+        log.Fatalf("Failed to create log directory: %v", err)
+    }
+
+    logPath := filepath.Join(logDir, "app.log")
+    logger, err := middleware.NewLogger(logPath)
+    if err != nil {
+        log.Fatalf("Failed to initialize logger: %v", err)
+    }
+    defer logger.Close()
+
     adStore := store.NewMemoryStore(cfg.UnsplashKey)
-    handler := handlers.NewHandler(adStore)
+    
+    handler := handlers.NewHandler(adStore, logger)
 
     if cfg.RefreshEnabled {
         go func() {
@@ -43,7 +58,10 @@ func main() {
 
             for range ticker.C {
                 if err := adStore.RefreshAds(); err != nil {
-                    log.Printf("Error refreshing ads: %v", err)
+                    logger.LogEvent("error", map[string]string{
+                        "type":    "ad_refresh_failed",
+                        "error":   err.Error(),
+                    })
                 }
             }
         }()
@@ -60,11 +78,21 @@ func main() {
         w.Write([]byte("healthy"))
     })
 
-    handlerWithCors := corsMiddleware(mux)
+    handlerChain := corsMiddleware(logger.LoggingMiddleware(mux))
 
     port := getEnvOrDefault("PORT", "8080")
+    serverAddr := ":" + port
+
+    logger.LogEvent("startup", map[string]string{
+        "port": port,
+        "environment": getEnvOrDefault("ENV", "development"),
+    })
+
     log.Printf("Server starting on port %s", port)
-    if err := http.ListenAndServe(":"+port, handlerWithCors); err != nil {
+    if err := http.ListenAndServe(serverAddr, handlerChain); err != nil {
+        logger.LogEvent("shutdown", map[string]string{
+            "error": err.Error(),
+        })
         log.Fatal(err)
     }
 }

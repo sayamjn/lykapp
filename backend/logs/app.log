@@ -1,0 +1,32 @@
+{"timestamp":"2025-02-11T10:34:41.282667+05:30","type":"startup","data":{"environment":"development","port":"8080"}}
+{"timestamp":"2025-02-11T10:34:56.780561+05:30","type":"ads_fetched","data":{"count":5}}
+{"timestamp":"2025-02-11T10:34:56.78113+05:30","method":"GET","path":"/api/ads","status_code":200,"duration":"968.146µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:34:56.782496+05:30","type":"ads_fetched","data":{"count":5}}
+{"timestamp":"2025-02-11T10:34:56.782571+05:30","method":"GET","path":"/api/ads","status_code":200,"duration":"80.53µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:34:56.783893+05:30","type":"ads_fetched","data":{"count":5}}
+{"timestamp":"2025-02-11T10:34:56.784058+05:30","method":"GET","path":"/api/ads","status_code":200,"duration":"179.898µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:34:56.785609+05:30","type":"ads_fetched","data":{"count":5}}
+{"timestamp":"2025-02-11T10:34:56.785778+05:30","method":"GET","path":"/api/ads","status_code":200,"duration":"193.051µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:35:09.492317+05:30","type":"session_created","data":{"session_id":"102904b4-d03c-49f6-9032-8b45b08a9d12"}}
+{"timestamp":"2025-02-11T10:35:09.492708+05:30","type":"click_recorded","data":{"ad_id":"2Fy9Rgq59QU","click_id":"e8a35465-ad54-4189-b236-4b7e6f1f77c9","session_id":"102904b4-d03c-49f6-9032-8b45b08a9d12","video_timestamp":0.791258}}
+{"timestamp":"2025-02-11T10:35:09.493566+05:30","method":"POST","path":"/api/ads/click","status_code":201,"duration":"1.728081ms","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:35:14.638086+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:35:14.638421+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"360.782µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:35:14.640963+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:35:14.641079+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"124.917µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:35:44.910593+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:35:44.911518+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"1.103648ms","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:36:14.914154+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:36:14.915029+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"885.076µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:36:44.913202+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:36:44.914042+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"982.837µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:37:14.911535+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:37:14.912379+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"998.688µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:38:00.023946+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:38:00.024344+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"558.298µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:39:00.057807+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:39:00.058159+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"431.114µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:40:00.102699+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:40:00.108995+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"6.323061ms","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}
+{"timestamp":"2025-02-11T10:40:14.636938+05:30","type":"clicks_fetched","data":{"count":1}}
+{"timestamp":"2025-02-11T10:40:14.637092+05:30","method":"GET","path":"/api/ads/clicks","status_code":200,"duration":"170.826µs","ip_address":"[::1]:52977","user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","request_id":""}

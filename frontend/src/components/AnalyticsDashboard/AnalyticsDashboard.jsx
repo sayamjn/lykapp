@@ -5,23 +5,25 @@ const AnalyticsDashboard = () => {
   const [clicks, setClicks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const loadClicks = async () => {
+    try {
+      const data = await fetchClicks();
+      setClicks(data);
+      setError(null);
+    } catch (err) {
+      setError('Failed to load analytics data');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const loadClicks = async () => {
-      try {
-        const data = await fetchClicks();
-        setClicks(data);
-        setLoading(false);
-      } catch (err) {
-        setError('Failed to load analytics data');
-        setLoading(false);
-      }
-    };
-
     loadClicks();
-    const interval = setInterval(loadClicks, 30000);
+    const interval = setInterval(loadClicks, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [refreshKey]);
 
   const calculateMetrics = () => {
     const totalClicks = clicks.length;
@@ -31,17 +33,68 @@ const AnalyticsDashboard = () => {
       return acc;
     }, {});
 
-    return { totalClicks, uniqueUsers, clicksByAd };
+    const avgClickTime = totalClicks > 0
+      ? (clicks.reduce((acc, click) => acc + click.videoPlaybackTs, 0) / totalClicks).toFixed(1)
+      : '0.0';
+
+    return { totalClicks, uniqueUsers, clicksByAd, avgClickTime };
   };
 
-  if (loading) return <div>Loading analytics...</div>;
-  if (error) return <div className="text-red-500">{error}</div>;
+  const handleRefresh = () => {
+    setLoading(true);
+    setRefreshKey(prev => prev + 1);
+  };
 
-  const { totalClicks, uniqueUsers, clicksByAd } = calculateMetrics();
+  if (loading) {
+    return (
+      <div className="bg-white p-6 rounded-lg shadow-lg">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold">Analytics Dashboard</h2>
+          <button
+            onClick={handleRefresh}
+            className="px-4 py-2 text-sm bg-blue-100 text-blue-600 rounded hover:bg-blue-200"
+            disabled={loading}
+          >
+            {loading ? 'Refreshing...' : 'Refresh'}
+          </button>
+        </div>
+        <div className="flex items-center justify-center h-48">
+          <div className="text-gray-500">Loading analytics...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-white p-6 rounded-lg shadow-lg">
+        <div className="text-red-500 p-4 rounded-lg bg-red-50">
+          {error}
+          <button
+            onClick={handleRefresh}
+            className="ml-4 text-sm text-red-600 underline hover:no-underline"
+          >
+            Try again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const { totalClicks, uniqueUsers, clicksByAd, avgClickTime } = calculateMetrics();
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6">Analytics Dashboard</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold">Analytics Dashboard</h2>
+        <button
+          onClick={handleRefresh}
+          className="px-4 py-2 text-sm bg-blue-100 text-blue-600 rounded hover:bg-blue-200"
+          disabled={loading}
+        >
+          {loading ? 'Refreshing...' : 'Refresh'}
+        </button>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div className="bg-blue-50 p-4 rounded-lg">
@@ -57,7 +110,7 @@ const AnalyticsDashboard = () => {
         <div className="bg-purple-50 p-4 rounded-lg">
           <h3 className="text-lg font-semibold">Avg. Click Time</h3>
           <p className="text-3xl font-bold text-purple-600">
-            {(clicks.reduce((acc, click) => acc + click.videoPlaybackTs, 0) / totalClicks).toFixed(1)}s
+            {avgClickTime}s
           </p>
         </div>
       </div>
@@ -69,11 +122,11 @@ const AnalyticsDashboard = () => {
             <div key={adId} className="flex items-center">
               <div className="w-full bg-gray-200 rounded-full h-2.5">
                 <div 
-                  className="bg-blue-600 h-2.5 rounded-full" 
+                  className="bg-blue-600 h-2.5 rounded-full transition-all duration-500" 
                   style={{ width: `${(count / totalClicks) * 100}%` }}
                 ></div>
               </div>
-              <span className="ml-2 text-sm">
+              <span className="ml-2 text-sm whitespace-nowrap">
                 Ad {adId}: {count} clicks
               </span>
             </div>
